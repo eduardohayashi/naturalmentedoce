@@ -13,7 +13,7 @@ const receitas = (await getCollection('receitas', ({ data }) => !data.rascunho))
   <section class="hero">
     <img
       class="hero-logo"
-      src="/logo.jpg"
+      src={`${import.meta.env.BASE_URL}/logo.jpg`}
       width="1254"
       height="1254"
       alt="Naturalmente Doce: vida saudável e nutrição integrativa"
@@ -22,7 +22,7 @@ const receitas = (await getCollection('receitas', ({ data }) => !data.rascunho))
     <p>
       Receitas do dia a dia, práticas de fazer e revisadas por uma especialista.
     </p>
-    <a class="botao" href="/receitas">Ver todas as receitas</a>
+    <a class="botao" href={`${import.meta.env.BASE_URL}/receitas`}>Ver todas as receitas</a>
     <Divisor />
   </section>
 
