@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { url } from '../utils/url';
 
 interface Props {
   receita: CollectionEntry<'receitas'>;
@@ -9,9 +10,9 @@ const { receita } = Astro.props;
 const { titulo, resumo, tempoMinutos, porcoes, imagem, imagemAlt, tags } = receita.data;
 ---
 
-<a class="cartao" href={`/receitas/${receita.id}`}>
+<a class="cartao" href={url(`/receitas/${receita.id}`)}>
   <div class="cartao-imagem">
-    {imagem ? <img src={imagem} alt={imagemAlt ?? titulo} loading="lazy" /> : <span aria-hidden="true">🥗</span>}
+    {imagem ? <img src={url(imagem)} alt={imagemAlt ?? titulo} loading="lazy" /> : <span aria-hidden="true">🥗</span>}
   </div>
   <div class="cartao-corpo">
     <h3>{titulo}</h3>

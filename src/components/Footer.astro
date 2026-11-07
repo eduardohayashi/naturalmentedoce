@@ -1,5 +1,6 @@
 ---
 import Divisor from './Divisor.astro';
+import { url } from '../utils/url';
 
 const ano = new Date().getFullYear();
 ---
@@ -9,8 +10,8 @@ const ano = new Date().getFullYear();
     <Divisor />
     <p class="lema">Vida saudável &amp; nutrição integrativa</p>
     <nav class="rodape-links" aria-label="Rodapé">
-      <a href="/receitas">Receitas</a>
-      <a href="/sobre">Sobre</a>
+      <a href={url('/receitas')}>Receitas</a>
+      <a href={url('/sobre')}>Sobre</a>
     </nav>
     <p>
       © {ano} Naturalmente Doce. As receitas têm caráter informativo e não

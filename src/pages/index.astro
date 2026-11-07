@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import RecipeCard from '../components/RecipeCard.astro';
 import Divisor from '../components/Divisor.astro';
+import { url } from '../utils/url';
 
 const receitas = (await getCollection('receitas', ({ data }) => !data.rascunho))
   .sort((a, b) => b.data.data.valueOf() - a.data.data.valueOf())
@@ -13,7 +14,7 @@ const receitas = (await getCollection('receitas', ({ data }) => !data.rascunho))
   <section class="hero">
     <img
       class="hero-logo"
-      src={`${import.meta.env.BASE_URL}/logo.jpg`}
+      src={url('/logo.jpg')}
       width="1254"
       height="1254"
       alt="Naturalmente Doce: vida saudável e nutrição integrativa"
@@ -22,13 +23,13 @@ const receitas = (await getCollection('receitas', ({ data }) => !data.rascunho))
     <p>
       Receitas do dia a dia, práticas de fazer e revisadas por uma especialista.
     </p>
-    <a class="botao" href={`${import.meta.env.BASE_URL}/receitas`}>Ver todas as receitas</a>
+    <a class="botao" href={url('/receitas')}>Ver todas as receitas</a>
     <Divisor />
   </section>
 
   <div class="secao-titulo">
     <h2>Últimas receitas</h2>
-    <a href="/receitas">Ver todas →</a>
+    <a href={url('/receitas')}>Ver todas →</a>
   </div>
 
   {

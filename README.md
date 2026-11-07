@@ -11,6 +11,21 @@ npm run build    # gera a pasta dist/
 npm run preview  # pré-visualiza o build
 ```
 
+## Endereços (GitHub Pages e localhost)
+
+O site funciona em dois endereços, sem mudar nada nos ficheiros:
+
+- **Desenvolvimento:** `npm run dev` abre em http://localhost:4321 (base `/`).
+- **GitHub Pages:** https://eduardohayashi.github.io/naturalmentedoce (base `/naturalmentedoce`). O `npm run build` e o `npm run preview` já usam esse base (o preview abre em http://localhost:4321/naturalmentedoce/).
+
+Todos os links e imagens passam pela função `url()` de `src/utils/url.ts`, que acrescenta o base automaticamente. Nas receitas, o campo `imagem` continua a ser escrito como `/imagens/ficheiro.jpg`, sem o base.
+
+Para publicar noutro sítio (por exemplo, um domínio próprio na raiz): `SITE_URL=https://meudominio.pt BASE_PATH=/ npm run build`.
+
+### Publicação no GitHub Pages
+
+O ficheiro `.github/workflows/deploy.yml` faz o build e publica a cada push na `main`. Uma única vez, no repositório do GitHub, vá a **Settings → Pages → Build and deployment** e escolha **Source: GitHub Actions**.
+
 ## Estrutura
 
 ```
@@ -55,5 +70,5 @@ O nome do ficheiro vira o endereço da receita (`salada-grao.md` → `/receitas/
 - [ ] Guardar o logótipo em `public/logo.jpg` (usado na página inicial e como imagem de partilha)
 - [ ] Substituir os dois exemplos por receitas reais (ou marcar `rascunho: true`)
 - [ ] Preencher a especialista na página `sobre.astro`
-- [ ] Definir o domínio em `astro.config.mjs`
+- [ ] Definir o domínio próprio, se vier a ter um (ver "Endereços")
 - [ ] Adicionar sitemap (`@astrojs/sitemap`) quando houver domínio

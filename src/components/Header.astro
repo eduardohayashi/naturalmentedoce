@@ -1,14 +1,16 @@
 ---
+import { url } from '../utils/url';
+
 const links = [
-  { href: '/', texto: 'Início', soDesktop: true },
-  { href: '/receitas', texto: 'Receitas' },
-  { href: '/sobre', texto: 'Sobre', soDesktop: true },
+  { href: url('/'), texto: 'Início', soDesktop: true },
+  { href: url('/receitas'), texto: 'Receitas' },
+  { href: url('/sobre'), texto: 'Sobre', soDesktop: true },
 ];
 ---
 
 <header class="cabecalho">
   <div class="container">
-    <a class="logo" href="/" aria-label="Naturalmente Doce, página inicial">
+    <a class="logo" href={url('/')} aria-label="Naturalmente Doce, página inicial">
       <svg class="logo-icone" viewBox="0 0 64 64" aria-hidden="true">
         <path d="M32 5C42 15 42 29 32 40 22 29 22 15 32 5Z" fill="#b9c39a"></path>
         <path d="M30 42C16 42 8 34 8 22c12 0 21 7 22 20Z" fill="#7a9a68"></path>
