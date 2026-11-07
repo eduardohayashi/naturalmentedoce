@@ -1,0 +1,17 @@
+---
+const nome = 'Naturalmente Doce';
+const links = [
+  { href: '/', texto: 'Início' },
+  { href: '/receitas', texto: 'Receitas' },
+  { href: '/sobre', texto: 'Sobre' },
+];
+---
+
+<header class="cabecalho">
+  <div class="container">
+    <a class="logo" href="/">🌿 {nome}</a>
+    <nav class="nav" aria-label="Principal">
+      {links.map((l) => <a href={l.href}>{l.texto}</a>)}
+    </nav>
+  </div>
+</header>

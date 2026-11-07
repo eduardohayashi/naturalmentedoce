@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+
+const receitas = (await getCollection('receitas', ({ data }) => !data.rascunho))
+  .sort((a, b) => b.data.data.valueOf() - a.data.data.valueOf())
+  .slice(0, 6);
+---
+
+<Base title="Naturalmente Doce">
+  <section class="hero">
+    <h1>Comer bem pode ser simples e saboroso</h1>
+    <p>
+      Receitas saudáveis do dia a dia, práticas de fazer e revisadas por uma
+      especialista.
+    </p>
+    <a class="botao" href="/receitas">Ver todas as receitas</a>
+  </section>
+
+  <div class="secao-titulo">
+    <h2>Últimas receitas</h2>
+    <a href="/receitas">Ver todas →</a>
+  </div>
+
+  {
+    receitas.length > 0 ? (
+      <div class="grelha">
+        {receitas.map((r) => <RecipeCard receita={r} />)}
+      </div>
+    ) : (
+      <p>Em breve, novas receitas por aqui.</p>
+    )
+  }
+</Base>

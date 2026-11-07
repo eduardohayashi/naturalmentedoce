@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  receita: CollectionEntry<'receitas'>;
+}
+
+const { receita } = Astro.props;
+const { titulo, resumo, tempoMinutos, porcoes, imagem, imagemAlt, tags } = receita.data;
+---
+
+<a class="cartao" href={`/receitas/${receita.id}`}>
+  <div class="cartao-imagem">
+    {imagem ? <img src={imagem} alt={imagemAlt ?? titulo} loading="lazy" /> : <span aria-hidden="true">🥗</span>}
+  </div>
+  <div class="cartao-corpo">
+    <h3>{titulo}</h3>
+    <p>{resumo}</p>
+    <div class="meta">
+      <span>⏱ {tempoMinutos} min</span>
+      <span>🍽 {porcoes} {porcoes === 1 ? 'porção' : 'porções'}</span>
+    </div>
+    {
+      tags.length > 0 && (
+        <div class="etiquetas">
+          {tags.slice(0, 3).map((t) => <span class="etiqueta">{t}</span>)}
+        </div>
+      )
+    }
+  </div>
+</a>
