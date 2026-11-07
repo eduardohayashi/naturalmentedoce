@@ -11,8 +11,8 @@ interface Props {
 
 const {
   title,
-  description = 'Receitas saudáveis, simples e saborosas, revisadas por uma especialista.',
-  image,
+  description = 'Vida saudável e nutrição integrativa. Receitas saudáveis, simples e saborosas, revisadas por uma especialista.',
+  image = '/logo.jpg',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -24,6 +24,7 @@ const titulo = title === 'Naturalmente Doce' ? title : `${title} · Naturalmente
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#4f6b3f" />
     <title>{titulo}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -34,7 +35,7 @@ const titulo = title === 'Naturalmente Doce' ? title : `${title} · Naturalmente
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content={Astro.props.image ? 'summary_large_image' : 'summary'} />
 
     <slot name="head" />
   </head>

@@ -34,6 +34,8 @@ const dataFormatada = data.toLocaleDateString('pt', {
   year: 'numeric',
 });
 
+const textoPorcoes = `${porcoes} ${porcoes === 1 ? 'porção' : 'porções'}`;
+
 // Dados estruturados de receita (usados pelo Google nos resultados de pesquisa).
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -42,7 +44,7 @@ const jsonLd = {
   description: resumo,
   datePublished: data.toISOString().slice(0, 10),
   totalTime: `PT${tempoMinutos}M`,
-  recipeYield: `${porcoes} ${porcoes === 1 ? 'porção' : 'porções'}`,
+  recipeYield: textoPorcoes,
   recipeIngredient: ingredientes,
   recipeInstructions: modoPreparo.map((texto) => ({ '@type': 'HowToStep', text: texto })),
   keywords: tags.join(', '),
@@ -55,40 +57,58 @@ const jsonLd = {
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
 
   <article class="receita">
-    <p><a href="/receitas">← Todas as receitas</a></p>
+    <p class="voltar"><a href="/receitas">← Receitas</a></p>
+
     <h1>{titulo}</h1>
     <p class="receita-resumo">{resumo}</p>
 
-    <div class="meta">
-      <span>📅 {dataFormatada}</span>
-      <span>⏱ {tempoMinutos} min</span>
-      <span>🍽 {porcoes} {porcoes === 1 ? 'porção' : 'porções'}</span>
+    <div class="info">
+      <span class="info-item">⏱ {tempoMinutos} min</span>
+      <span class="info-item">🍽 {textoPorcoes}</span>
     </div>
 
+    {
+      alergenicos.length > 0 && (
+        <p class="alergenicos">
+          <strong>Alergénios:</strong> {alergenicos.join(', ')}
+        </p>
+      )
+    }
+
     {revisadoPor && <p><span class="selo-revisao">✔ Revisada por {revisadoPor}</span></p>}
+
+    <a class="salto" href="#preparo">Ir direto ao modo de preparo ↓</a>
 
     {
       imagem && (
         <div class="receita-imagem">
-          <img src={imagem} alt={imagemAlt ?? titulo} />
+          <img src={imagem} alt={imagemAlt ?? titulo} width="1200" height="750" />
         </div>
       )
     }
 
     <div class="receita-blocos">
-      <section>
-        <h2>Ingredientes</h2>
-        <ul>{ingredientes.map((i) => <li>{i}</li>)}</ul>
-        {
-          alergenicos.length > 0 && (
-            <p class="meta"><strong>Alergénios:</strong> {alergenicos.join(', ')}</p>
-          )
-        }
+      <section class="ingredientes-bloco" aria-labelledby="titulo-ingredientes">
+        <h2 id="titulo-ingredientes">Ingredientes</h2>
+        <ul class="lista-ingredientes">
+          {
+            ingredientes.map((i) => (
+              <li>
+                <label>
+                  <input type="checkbox" />
+                  <span>{i}</span>
+                </label>
+              </li>
+            ))
+          }
+        </ul>
       </section>
 
-      <section>
-        <h2>Modo de preparo</h2>
-        <ol>{modoPreparo.map((p) => <li>{p}</li>)}</ol>
+      <section id="preparo" aria-labelledby="titulo-preparo">
+        <h2 id="titulo-preparo">Modo de preparo</h2>
+        <ol class="passos">
+          {modoPreparo.map((p) => <li><span>{p}</span></li>)}
+        </ol>
       </section>
     </div>
 
@@ -103,6 +123,8 @@ const jsonLd = {
         </div>
       )
     }
+
+    <p class="meta">📅 Publicada em {dataFormatada}</p>
 
     <p class="aviso">
       Conteúdo informativo. Em caso de alergias, intolerâncias ou condições de

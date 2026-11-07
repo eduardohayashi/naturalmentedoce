@@ -1,9 +1,17 @@
 ---
+import Divisor from './Divisor.astro';
+
 const ano = new Date().getFullYear();
 ---
 
 <footer class="rodape">
   <div class="container">
+    <Divisor />
+    <p class="lema">Vida saudável &amp; nutrição integrativa</p>
+    <nav class="rodape-links" aria-label="Rodapé">
+      <a href="/receitas">Receitas</a>
+      <a href="/sobre">Sobre</a>
+    </nav>
     <p>
       © {ano} Naturalmente Doce. As receitas têm caráter informativo e não
       substituem o acompanhamento de um profissional de saúde.

@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#5b8c5a"/>
-  <text x="32" y="44" font-size="34" text-anchor="middle">🌿</text>
+  <path d="M32 5C42 15 42 29 32 40 22 29 22 15 32 5Z" fill="#b9c39a"/>
+  <path d="M30 42C16 42 8 34 8 22c12 0 21 7 22 20Z" fill="#7a9a68"/>
+  <path d="M34 42c14 0 22-8 22-20-12 0-21 7-22 20Z" fill="#4f6b3f"/>
+  <path d="M14 52q18 8 36 0" fill="none" stroke="#c9b49c" stroke-width="3" stroke-linecap="round"/>
 </svg>

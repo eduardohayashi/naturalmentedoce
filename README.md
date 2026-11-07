@@ -52,6 +52,7 @@ O nome do ficheiro vira o endereço da receita (`salada-grao.md` → `/receitas/
 
 ## Pendências
 
+- [ ] Guardar o logótipo em `public/logo.jpg` (usado na página inicial e como imagem de partilha)
 - [ ] Substituir os dois exemplos por receitas reais (ou marcar `rascunho: true`)
 - [ ] Preencher a especialista na página `sobre.astro`
 - [ ] Definir o domínio em `astro.config.mjs`

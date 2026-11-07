@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import RecipeCard from '../components/RecipeCard.astro';
+import Divisor from '../components/Divisor.astro';
 
 const receitas = (await getCollection('receitas', ({ data }) => !data.rascunho))
   .sort((a, b) => b.data.data.valueOf() - a.data.data.valueOf())
@@ -10,12 +11,19 @@ const receitas = (await getCollection('receitas', ({ data }) => !data.rascunho))
 
 <Base title="Naturalmente Doce">
   <section class="hero">
+    <img
+      class="hero-logo"
+      src="/logo.jpg"
+      width="1254"
+      height="1254"
+      alt="Naturalmente Doce: vida saudável e nutrição integrativa"
+    />
     <h1>Comer bem pode ser simples e saboroso</h1>
     <p>
-      Receitas saudáveis do dia a dia, práticas de fazer e revisadas por uma
-      especialista.
+      Receitas do dia a dia, práticas de fazer e revisadas por uma especialista.
     </p>
     <a class="botao" href="/receitas">Ver todas as receitas</a>
+    <Divisor />
   </section>
 
   <div class="secao-titulo">
