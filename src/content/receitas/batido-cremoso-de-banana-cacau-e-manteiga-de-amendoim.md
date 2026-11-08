@@ -22,5 +22,7 @@ tags:
   - "Lanche"
   - "Vegetariano"
   - "Rápido"
+imagem: "/imagens/batido-cremoso-de-banana-cacau-e-manteiga-de-amendoim.jpg"
+imagemAlt: "Foto ilustrativa: Batido Cremoso de Banana, Cacau e Manteiga de Amendoim"
 rascunho: false
 ---
