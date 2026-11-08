@@ -59,6 +59,8 @@ e `rascunho`. Veja os exemplos em `src/content/receitas/`.
 
 O nome do ficheiro vira o endereço da receita (`salada-grao.md` → `/receitas/salada-grao`).
 
+A imagem de uma receita é o campo `imagem`, se existir; senão, o site procura `public/imagens/<nome-do-ficheiro>.jpg` (por exemplo, `salada-grao.md` → `public/imagens/salada-grao.jpg`), que é onde o n8n a grava.
+
 ## Para publicar automaticamente (n8n)
 
 1. O agente cria um `.md` novo em `src/content/receitas/` (e a imagem em `public/imagens/`) só quando a receita tiver status "Aprovada".

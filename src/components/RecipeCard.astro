@@ -1,18 +1,20 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { url } from '../utils/url';
+import { imagemDaReceita } from '../utils/imagem';
 
 interface Props {
   receita: CollectionEntry<'receitas'>;
 }
 
 const { receita } = Astro.props;
-const { titulo, resumo, tempoMinutos, porcoes, imagem, imagemAlt, tags } = receita.data;
+const { titulo, resumo, tempoMinutos, porcoes, imagemAlt, tags } = receita.data;
+const imagem = imagemDaReceita(receita);
 ---
 
 <a class="cartao" href={url(`/receitas/${receita.id}`)}>
   <div class="cartao-imagem">
-    {imagem ? <img src={url(imagem)} alt={imagemAlt ?? titulo} loading="lazy" /> : <span aria-hidden="true">🥗</span>}
+    {imagem ? <img src={url(imagem)} alt={imagemAlt ?? `Foto ilustrativa: ${titulo}`} loading="lazy" /> : <span aria-hidden="true">🥗</span>}
   </div>
   <div class="cartao-corpo">
     <h3>{titulo}</h3>

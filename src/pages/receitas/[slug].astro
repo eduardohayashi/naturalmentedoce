@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { url } from '../../utils/url';
+import { imagemDaReceita } from '../../utils/imagem';
 
 export async function getStaticPaths() {
   const receitas = await getCollection('receitas', ({ data }) => !data.rascunho);
@@ -22,10 +23,11 @@ const {
   modoPreparo,
   alergenicos,
   tags,
-  imagem,
   imagemAlt,
   revisadoPor,
 } = receita.data;
+
+const imagem = imagemDaReceita(receita);
 
 const { Content } = await render(receita);
 
@@ -83,7 +85,7 @@ const jsonLd = {
     {
       imagem && (
         <div class="receita-imagem">
-          <img src={url(imagem)} alt={imagemAlt ?? titulo} width="1200" height="750" />
+          <img src={url(imagem)} alt={imagemAlt ?? `Foto ilustrativa: ${titulo}`} width="1200" height="750" />
         </div>
       )
     }
