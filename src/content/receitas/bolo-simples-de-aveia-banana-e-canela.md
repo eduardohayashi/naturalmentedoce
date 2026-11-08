@@ -29,5 +29,7 @@ tags:
   - "sem lactose"
   - "pequeno-almoço"
   - "lanche"
+imagem: "/imagens/bolo-simples-de-aveia-banana-e-canela.jpg"
+imagemAlt: "Foto ilustrativa: Bolo Simples de Aveia, Banana e Canela"
 rascunho: false
 ---
