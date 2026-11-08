@@ -28,5 +28,7 @@ tags:
   - "Jantar"
   - "Rápido"
   - "Carne"
+imagem: "/imagens/salteado-de-frango-com-courgette-e-molho-de-soja.jpg"
+imagemAlt: "Foto ilustrativa: Salteado de Frango com Courgette e Molho de Soja"
 rascunho: false
 ---
